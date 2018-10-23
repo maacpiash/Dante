@@ -6,6 +6,8 @@
 <h3 align="center">A blog webapp built entirely with ASP.NET Core technologies.</h3>
 <br>
 
+[![HitCount](http://hits.dwyl.io/maacpiash/Dante.svg)](http://hits.dwyl.io/maacpiash/Dante)
+
 ## Frameworks used
 
 - Back-end: ASP.NET Core
