@@ -1,6 +1,9 @@
 ﻿@page
 @model Dante.Pages.IndexModel
 
+@inject SignInManager<Dante.Models.Author> SignInManager
+@inject UserManager<Dante.Models.Author> UserManager
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -10,57 +13,55 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
+@foreach (var item in Model.Stories)
+{
+    <h3>@item.Title</h3>
+    <p>Posted by <strong>@item.AuthName</strong><br/>
+    Last edited on <strong>@item.LastEditedOn.ToDanteDT()</strong><br />
+    Originally posted on <strong>@item.PostedOn.ToDanteDT()</strong></p>
+    <p>@item.Body</p>
+    <table>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Story[0].AuthID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Story[0].AuthName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Story[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Story[0].Body)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Story[0].PostedOn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Story[0].LastEditedOn)
-            </th>
-            <th></th>
+            <td><a asp-page="./Details" asp-route-id="@item.ID">View</a></td>
+            <br />
+            @if (item.AuthID == @UserManager.GetUserName(User))
+            {
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                </td>
+                <td>
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            }
         </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Story) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AuthID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AuthName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Body)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostedOn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastEditedOn)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
+    </table>
 }
-    </tbody>
-</table>
+    
+
+@{
+    var prevDisabled = !Model.Stories.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Stories.HasNextPage ? "disabled" : "";
+}
+<a asp-page="./Index"
+   asp-route-pageIndex="@(Model.Stories.PageIndex - 1)"
+   asp-route-Filter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-pageIndex="@(Model.Stories.PageIndex + 1)"
+   asp-route-Filter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+

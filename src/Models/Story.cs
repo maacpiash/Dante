@@ -8,7 +8,7 @@ namespace Dante.Models
     public class Story
     {
         public int ID { get; set; }
-        public int AuthID { get; set; }
+        public string AuthID { get; set; }
         public string AuthName { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }

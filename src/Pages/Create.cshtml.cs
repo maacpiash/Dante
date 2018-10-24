@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Dante.Data;
 using Dante.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Dante.Pages
 {
@@ -29,6 +30,10 @@ namespace Dante.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
+            Story.AuthID = HttpContext.User.Identity.Name;
+            
+            if (Story.PostedOn > DateTime.Now)
+                ModelState.AddModelError("PostedOn", "Well hello, time traveller!");
             if (!ModelState.IsValid)
             {
                 return Page();

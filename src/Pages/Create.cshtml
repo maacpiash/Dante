@@ -14,34 +14,14 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Story.AuthID" class="control-label"></label>
-                <input asp-for="Story.AuthID" class="form-control" />
-                <span asp-validation-for="Story.AuthID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Story.AuthName" class="control-label"></label>
-                <input asp-for="Story.AuthName" class="form-control" />
-                <span asp-validation-for="Story.AuthName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Story.Title" class="control-label"></label>
                 <input asp-for="Story.Title" class="form-control" />
                 <span asp-validation-for="Story.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Story.Body" class="control-label"></label>
-                <input asp-for="Story.Body" class="form-control" />
+                <textarea asp-for="Story.Body" class="form-control" />
                 <span asp-validation-for="Story.Body" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Story.PostedOn" class="control-label"></label>
-                <input asp-for="Story.PostedOn" class="form-control" />
-                <span asp-validation-for="Story.PostedOn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Story.LastEditedOn" class="control-label"></label>
-                <input asp-for="Story.LastEditedOn" class="form-control" />
-                <span asp-validation-for="Story.LastEditedOn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
