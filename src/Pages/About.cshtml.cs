@@ -12,7 +12,7 @@ namespace Dante.Pages
 
         public void OnGet()
         {
-            Message = "Your application description page.";
+            Message = "Dante, A blog webapp built entirely with ASP.NET Core technologies!";
         }
     }
 }

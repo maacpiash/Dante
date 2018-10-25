@@ -31,7 +31,8 @@ namespace Dante.Pages
         public async Task<IActionResult> OnPostAsync()
         {
             Story.AuthID = HttpContext.User.Identity.Name;
-            
+            Story.PostedOn = DateTime.Now;
+            Story.LastEditedOn = DateTime.Now;
             if (Story.PostedOn > DateTime.Now)
                 ModelState.AddModelError("PostedOn", "Well hello, time traveller!");
             if (!ModelState.IsValid)

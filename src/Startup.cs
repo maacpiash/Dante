@@ -36,10 +36,11 @@ namespace Dante
             });
 
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseInMemoryDatabase("IMDb"));
+                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<Author>().AddEntityFrameworkStores<AppDbContext>();
 
-            services.AddCors();
+            //services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -62,7 +63,7 @@ namespace Dante
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+            //app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             app.UseMvc();
         }
     }
