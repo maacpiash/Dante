@@ -17,8 +17,6 @@
 - Database management: Entity Framework Core
 - Authentication and Authorization: Identity Framework
 
-*Under development!*
-
 ## Roadmap
 
 - [x] Create stories.
@@ -42,3 +40,5 @@
     - [ ] Comments
 - [ ] Users uploading avatars.
 - [ ] Users following Authors.
+
+*Under development!*

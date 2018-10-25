@@ -9,10 +9,14 @@ namespace Dante.Pages
     public class ContactModel : PageModel
     {
         public string Message { get; set; }
+        public string Tweet { get; set; }
+        public string GitHub { get; set; }
 
         public void OnGet()
         {
             Message = "Developed by Md. Abdul Ahad Chowdhury";
+            Tweet = "Tweet to @maacpiash";
+            GitHub = "Follow @maacpiash";
         }
     }
 }

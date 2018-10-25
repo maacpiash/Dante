@@ -9,10 +9,11 @@ namespace Dante.Pages
     public class AboutModel : PageModel
     {
         public string Message { get; set; }
-
+        public string Tweet { get; set; }
         public void OnGet()
         {
-            Message = "Dante, A blog webapp built entirely with ASP.NET Core technologies!";
+            Message = "A blog webapp built entirely with ASP.NET Core technologies!";
+            Tweet = "Tweet to @maacpiash";
         }
     }
 }
