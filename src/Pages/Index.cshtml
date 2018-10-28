@@ -28,7 +28,7 @@
 @foreach (var item in Model.Stories)
 {
     <h3>@item.Title</h3>
-    <p>Posted by <strong>@item.AuthName</strong><br/>
+    <p>Posted by <strong>@item.Author.Name</strong><br/>
     Last edited on <strong>@item.LastEditedOn.ToDanteDT()</strong><br />
     Originally posted on <strong>@item.PostedOn.ToDanteDT()</strong></p>
     <p>@item.Body</p>
@@ -36,7 +36,7 @@
         <tr>
             <td><a asp-page="./Details" asp-route-id="@item.ID">View</a></td>
             <br />
-            @if (item.AuthID == @UserManager.GetUserName(User))
+            @if (item.Author.Id.ToString() == @UserManager.GetUserName(User))
             {
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

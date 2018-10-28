@@ -39,9 +39,10 @@ namespace Dante
                 options.UseInMemoryDatabase("IMDb"));
                 //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<Author>().AddEntityFrameworkStores<AppDbContext>();
-
-            //services.AddCors();
+            
+            services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,7 +64,10 @@ namespace Dante
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-            //app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+            
+            
+            
             app.UseMvc();
         }
     }

@@ -9,8 +9,7 @@ namespace Dante.Models
     public class Activity
     {
         public int ID { get; set; }
-        public string AuthID { get; set; }
-        public string AuthName { get; set; }
+        public Author Author { get; set; }
         public DateTime PostedOn { get; set; }
         public string ActivityDisplayText { get; set; }
         // Example of an ActivityDisplayText (will appear
@@ -34,7 +33,7 @@ namespace Dante.Models
         public List<Comment> Comments { get; set; }
     }
 
-    // A Cpmment is posted on a Story. It cannot be edited and cannot be commented on, but can be reacted on.
+    // A Comment is posted on a Story. It cannot be edited and cannot be commented on, but can be reacted on.
     public class Comment : Content
     {
         public Story Parent { get; set; }
@@ -43,7 +42,7 @@ namespace Dante.Models
     // A Reaction is an Author's primitive non-contextual opinion on a Story or a Comment.
     public class Reaction : Activity
     {
-        public Content Parent { get; set; }
+        //public Content Parent { get; set; }
         public int React;
     }
 

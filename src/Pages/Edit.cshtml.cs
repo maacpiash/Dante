@@ -6,18 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Dante.Data;
 using Dante.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Dante.Pages
 {
+    [Authorize]
     public class EditModel : PageModel
     {
-        private readonly Dante.Data.AppDbContext _context;
+        private readonly AppDbContext _context;
+        
+        private readonly UserManager<Author> _manager;
 
-        public EditModel(Dante.Data.AppDbContext context)
+        public EditModel(AppDbContext context, UserManager<Author> manager)
         {
             _context = context;
+            _manager = manager;
         }
 
         [BindProperty]
@@ -25,27 +31,29 @@ namespace Dante.Pages
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null)            
+                return NotFound();            
 
             Story = await _context.Stories.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Story == null)
-            {
+            if (Story == null)            
                 return NotFound();
-            }
+                
+            var Author = await _manager.GetUserAsync(HttpContext.User);
+
+            if (Story.Author != Author)
+                return Forbid();
+            
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
-            {
                 return Page();
-            }
 
+            Story.LastEditedOn = DateTime.Now;
+            
             _context.Attach(Story).State = EntityState.Modified;
 
             try
@@ -55,13 +63,10 @@ namespace Dante.Pages
             catch (DbUpdateConcurrencyException)
             {
                 if (!StoryExists(Story.ID))
-                {
-                    return NotFound();
-                }
+                    return NotFound();                
                 else
-                {
                     throw;
-                }
+                
             }
 
             return RedirectToPage("./Index");

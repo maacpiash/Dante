@@ -8,16 +8,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Dante.Data;
 using Dante.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Dante.Pages
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
         private readonly Dante.Data.AppDbContext _context;
+        private readonly UserManager<Author> _manager;
 
-        public CreateModel(Dante.Data.AppDbContext context)
+        public CreateModel(AppDbContext context, UserManager<Author> manager)
         {
             _context = context;
+            _manager = manager;
         }
 
         public IActionResult OnGet()
@@ -30,7 +34,7 @@ namespace Dante.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            Story.AuthID = HttpContext.User.Identity.Name;
+            Story.Author = await _manager.GetUserAsync(HttpContext.User);
             Story.PostedOn = DateTime.Now;
             Story.LastEditedOn = DateTime.Now;
             if (Story.PostedOn > DateTime.Now)
