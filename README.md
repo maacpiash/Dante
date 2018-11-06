@@ -9,8 +9,8 @@
 [![Build Status](https://travis-ci.org/maacpiash/Dante.svg?branch=master)](https://travis-ci.org/maacpiash/Dante)
 [![Build status](https://ci.appveyor.com/api/projects/status/a77ttt1754stb2rh/branch/master?svg=true)](https://ci.appveyor.com/project/maacpiash/dante/branch/master)
 [![HitCount](http://hits.dwyl.io/maacpiash/Dante.svg)](http://hits.dwyl.io/maacpiash/Dante)
-![GitHub issues](https://img.shields.io/github/issues/maacpiash/Dante.svg)
-![GitHub contributors](https://img.shields.io/github/contributors/maacpiash/Dante.svg)
+[![GitHub issues](https://img.shields.io/github/issues/maacpiash/Dante.svg)](https://github.com/maacpiash/Dante/issues)
+[![GitHub contributors](https://img.shields.io/github/contributors/maacpiash/Dante.svg)](https://github.com/maacpiash/Dante/graphs/contributors)
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=flat)](https://twitter.com/intent/tweet?url=https%3A//github.com/maacpiash/Dante&text=A%20blog%20webapp%20built%20entirely%20with%20ASP%2ENET%20Core%20technologies%21)
 
 ## Frameworks used
