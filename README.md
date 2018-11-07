@@ -4,14 +4,30 @@
 
 <h1 align="center">Dante</h1>
 <h3 align="center">A blog webapp built entirely with ASP.NET Core technologies.</h3>
+<p align="center">
+    <a href="https://travis-ci.org/maacpiash/Dante" target="_blank">
+        <img src="https://travis-ci.org/maacpiash/Dante.svg?branch=master" alt="Build Status"/>
+    </a>
+    <a href="https://ci.appveyor.com/project/maacpiash/dante/branch/master" target="_blank">
+        <img src="https://ci.appveyor.com/api/projects/status/a77ttt1754stb2rh/branch/master?svg=true" alt="Build Status"/>
+    </a>
+    <a href="http://hits.dwyl.io/maacpiash/Dante" target="_blank">
+        <img src="http://hits.dwyl.io/maacpiash/Dante.svg" alt="HitCount"/>
+    </a>
+    <a href="https://github.com/maacpiash/Dante/issues" target="_blank">
+        <img src="https://img.shields.io/github/issues/maacpiash/Dante.svg" alt="Open issues"/>
+    </a>
+    <a href="https://github.com/maacpiash/Dante/graphs/contributors" target="_blank">
+        <img src="https://img.shields.io/github/contributors/maacpiash/Dante.svg" alt="Contributors"/>
+    </a>
+    <a href="https://gitter.im/maacpiash/Dante" target="_blank">
+        <img src="https://badges.gitter.im/maacpiash/Dante.png" alt="Gitter"/>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=https%3A//github.com/maacpiash/Dante&text=A%20blog%20webapp%20built%20entirely%20with%20ASP%2ENET%20Core%20technologies%21" target="_blank">
+        <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=flat" alt="Share on Twitter"/>
+    </a>
+</p>
 <br>
-
-[![Build Status](https://travis-ci.org/maacpiash/Dante.svg?branch=master)](https://travis-ci.org/maacpiash/Dante)
-[![Build status](https://ci.appveyor.com/api/projects/status/a77ttt1754stb2rh/branch/master?svg=true)](https://ci.appveyor.com/project/maacpiash/dante/branch/master)
-[![HitCount](http://hits.dwyl.io/maacpiash/Dante.svg)](http://hits.dwyl.io/maacpiash/Dante)
-[![GitHub issues](https://img.shields.io/github/issues/maacpiash/Dante.svg)](https://github.com/maacpiash/Dante/issues)
-[![GitHub contributors](https://img.shields.io/github/contributors/maacpiash/Dante.svg)](https://github.com/maacpiash/Dante/graphs/contributors)
-[![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?url=https%3A//github.com/maacpiash/Dante&text=A%20blog%20webapp%20built%20entirely%20with%20ASP%2ENET%20Core%20technologies%21)
 
 ## Frameworks used
 
