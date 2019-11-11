@@ -1,42 +1,35 @@
 language: csharp
 solution: Dante.sln
 mono: none
-dotnet: 2.1.3
+dotnet: 2.1.802 # LTS
+sudo: required
 
 env:
   - CLI_VERSION=latest
-  
-addons:
-  apt:
-    packages:
-    - gettext
-    - libcurl4-openssl-dev
-    - libicu-dev
-    - libssl-dev
-    - libunwind8
-    - zlib1g
 
-os:
-  - linux
+jobs:
+  include:
+    - os: linux
+      dist: bionic # Ubuntu 18.04 (LTS)
+    - os: osx
+      osx_image: xcode11.2 # macOS 10.14 (Mojave)
+  allow_failures:
+    - os: osx
 
 notifications:
   email:
-    - root@maacpiash.com
+    - ahadc@maacpiash.com
 
 branches:
   only:
     - master
 
-matrix:
-  include:
-    - os: linux 
-      dist: trusty # Ubuntu 14.04
-      dotnet: 2.1
-
 before_install:
   - if [ $TRAVIS_OS_NAME = ubuntu ]; then sudo apt-get update; fi
   - if [ $TRAVIS_OS_NAME = osx ]; then brew update; fi
+  - dotnet --info
 
 script:
   - dotnet restore
   - dotnet build
+  
